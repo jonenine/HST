@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- log字段支持 -->		
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.WebLogicNativeJdbcExtractor"
+		lazy-init="true"/>
+
+	<bean id="lobHandler"
+		class="org.springframework.jdbc.support.lob.OracleLobHandler"
+		lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<ref local="nativeJdbcExtractor"/>
+		</property>
+	</bean>
+	
+	<!-- 改变驱动名称 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@172.16.144.64:1521:epmisdb4</value>
+		</property>
+		<property name="username">
+			<value>epmis</value>
+		</property>
+		<property name="password">
+			<value>y4yhl9t</value>
+		</property>
+		<property name="autoCommit">
+			<value>true</value>
+		</property>
+		<property name="suppressClose">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSource_to"
+		class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@10.120.198.135:15218:orcl</value>
+		</property>
+		<property name="username">
+			<value>lspf_support</value>
+		</property>
+		<property name="password">
+			<value>lspf_support</value>
+		</property>
+		<property name="autoCommit">
+			<value>false</value>
+		</property>
+		<property name="suppressClose">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="jdbcTemplateDAO"
+		class="test.application.JdbcTemplateDAOImpl">
+		<property name="datasource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+	
+	
+	
+</beans>
+
