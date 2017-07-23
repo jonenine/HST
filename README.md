@@ -2,7 +2,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然大数据技术的发展已经将近10个年头了，hadoop技术仍然没有过时，特别是一些低成本，入门级的小项目，使用hadoop还是蛮不错的。而且，也不是每一个公司都有能力招聘和培养自己的spark人才。<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我本人对于hadoop mapreduce是有一些意见的。hadoop mapreduce技术对于开发人员的友好度不高，程序难写，调试困难，对于复杂的业务逻辑远没有spark得心应手。<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年的春节前接到一个任务，要在一个没有spark的平台实现电力系统的一些统计分析算法，可选的技术只有hadoop mapreduce。受了这个刺激之后产生了一些奇思妙想，然后做了一些试验，并最终形成HST---hadoop simplize toolkit，还真是无心载柳柳成荫啊。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015年的春节前接到一个任务，要在一个没有spark的平台实现电力系统的一些统计分析算法，可选的技术只有hadoop mapreduce。受了这个刺激之后产生了一些奇思妙想，然后做了一些试验，并最终形成HST---hadoop simplize toolkit，还真是无心载柳柳成荫啊。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HST基本优点如下**：<br/>
 
